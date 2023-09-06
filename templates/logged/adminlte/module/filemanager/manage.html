@@ -1,0 +1,58 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-info-circle"></i> {page_title}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <iframe src="filemanager/dialog.php" style="width:100%;height:500px;border:none"></iframe>
+                </div>
+            </div>          
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+$("#simpan").click(function(){
+    $("#multiform").submit();
+});
+
+$("#multiform").submit(function(e){
+    $("#alertbox").html("<img src='images/preview.gif'/>");
+    var formURL = $("#multiform").attr("action");
+    var formData = new FormData(this);
+    $.ajax({
+        url: formURL,
+        type: 'POST',
+        data:  formData,
+        mimeType:"multipart/form-data",
+        dataType:"json",
+        contentType: false,
+        cache: false,
+        processData:false,
+        success: function(data)
+        {
+            if (data.response=="true") {
+                $("#alertbox").html('<div class="alert alert-success animated flash">Sukses Mengirim SMS</div>');
+                window.setTimeout(function () {
+                    location.href = "?mode=admin&menu=kirim_sms&f=manage&token={token}"; 
+                }, 2000); 
+            }
+            else{
+                $('#alertbox').html('<div class="alert alert-warning animated flash" role="alert">'+data.message+'</div>');
+            };                
+        }          
+   });
+    e.preventDefault();
+    e.unbind();
+});
+
+
+
+});
+
+</script>
+

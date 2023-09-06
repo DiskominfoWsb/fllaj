@@ -1,0 +1,185 @@
+#AddHandler application/x-httpd-php .gi
+RewriteEngine on
+DirectoryIndex awal.php 
+#php_flag magic_quotes_gpc Off
+
+Options -indexes
+
+RewriteRule ^giadmin/logout$ awal.php?mode=admin&menu=logout
+RewriteRule ^giadmin/([^/]+)/([^/]+)/([^/]+) awal.php?mode=admin&menu=$1&f=$3&id=$2 [L]
+RewriteRule ^giadmin/([^/]+)/([^/]+) awal.php?mode=admin&menu=$1&f=$2 [L]
+RewriteRule ^giadmin/([^/]+) awal.php?mode=admin&menu=$1 [L]
+RewriteRule ^giadmin awal.php?mode=admin
+
+RewriteRule ^secureimage.png include/component/CaptchaSecurityImages.php [L]
+
+RewriteRule ^api/([^/]+)/([^/]+)/([^/]+)/([^/]+) awal.php?mode=api&f=$2&page=$3&limit=$4&id=$1 [L]
+RewriteRule ^api/([^/]+)/([^/]+)/([^/]+) awal.php?mode=api&f=$1&page=$2&limit=$3 [L]
+RewriteRule ^api/([^/]+)/([^/]+) awal.php?mode=api&f=$1&page=$2 [L]
+RewriteRule ^api/([^/]+) awal.php?mode=api&f=$1 [L]
+RewriteRule ^api awal.php?mode=api [L]
+
+RewriteRule ^cari/([^/]+) awal.php?menu=berita&cari_berita=$1 [L]
+
+RewriteRule ^berita/read/([^/]+)/([^/]+) awal.php?mode=front&menu=berita&f=read&id=$1 [L]
+RewriteRule ^berita/([^/]+) awal.php?mode=front&menu=berita&page=$1 [L]
+RewriteRule ^berita awal.php?mode=front&menu=berita&page=1 [L]
+
+RewriteRule ^page/([^/]+)/([^/]+) awal.php?mode=front&menu=page&id=$1&urai_menu=$2 [L]
+
+RewriteRule ^agenda/read/([^/]+)/([^/]+) awal.php?mode=front&menu=agenda&f=read&id=$1 [L]
+RewriteRule ^agenda/([^/]+) awal.php?mode=front&menu=agenda&page=$1 [L]
+RewriteRule ^agenda awal.php?mode=front&menu=agenda [L]
+
+RewriteRule ^download awal.php?mode=front&menu=download [L]
+RewriteRule ^publikasi awal.php?mode=front&menu=publikasi [L]
+
+RewriteRule ^foto/([^/]+)/([^/]+)/([^/]+) awal.php?mode=front&menu=foto&f=albumfoto&id=$1&page=$3 [L]
+RewriteRule ^foto/([^/]+)/([^/]+) awal.php?mode=front&menu=foto&f=albumfoto&id=$1 [L]
+RewriteRule ^foto/([^/]+) awal.php?mode=front&menu=foto&page=$1 [L]
+RewriteRule ^foto awal.php?mode=front&menu=foto [L]
+
+RewriteRule ^video/([^/]+) awal.php?mode=front&menu=video&page=$1 [L]
+RewriteRule ^video awal.php?mode=front&menu=video [L]
+
+RewriteRule ^kontak/([^/]+) awal.php?mode=front&menu=kontak&page=$1 [L]
+RewriteRule ^kontak awal.php?mode=front&menu=kontak [L]
+
+RewriteRule ^guru/([^/]+) awal.php?mode=front&menu=siswaguru&filter=guru&page=$1 [L]
+RewriteRule ^guru awal.php?mode=front&menu=siswaguru&filter=guru [L]
+
+RewriteRule ^walikelas/([^/]+) awal.php?mode=front&menu=siswaguru&filter=walikelas&page=$1 [L]
+RewriteRule ^walikelas awal.php?mode=front&menu=siswaguru&filter=walikelas [L]
+
+RewriteRule ^siswa/read/([^/]+)/([^/]+) awal.php?mode=front&menu=berita&f=read&menu=siswaguru&filter=siswa&id=$1 [L]
+RewriteRule ^siswa/([^/]+) awal.php?mode=front&menu=siswaguru&filter=siswa&page=$1 [L]
+RewriteRule ^siswa awal.php?mode=front&menu=siswaguru&filter=siswa [L]
+
+RewriteRule ^alumni/read/([^/]+)/([^/]+) awal.php?mode=front&menu=berita&f=read&menu=siswaguru&filter=alumni&id=$1 [L]
+RewriteRule ^alumni/([^/]+) awal.php?mode=front&menu=siswaguru&filter=alumni&page=$1 [L]
+RewriteRule ^alumni awal.php?mode=front&menu=siswaguru&filter=alumni [L]
+
+RewriteRule ^kategori/([^/]+)/([^/]+)/([^/]+) awal.php?mode=front&menu=kategori&id_kategori=$1&page=$3 [L]
+RewriteRule ^kategori/([^/]+)/([^/]+) awal.php?mode=front&menu=kategori&id_kategori=$1 [L]
+
+RewriteRule ^visimisi awal.php?mode=front&menu=visimisi [L]
+
+RewriteRule ^home awal.php?mode=front&menu=home [L]
+
+RewriteRule ^pengaduan/([^/]+) awal.php?mode=front&menu=pengaduan&page=$1 [L]
+RewriteRule ^pengaduan awal.php?mode=front&menu=pengaduan [L]
+
+<FilesMatch "\.txt$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.htm$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.html$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.phtml$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.php5$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.pht$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.shtml$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.asa$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.cer$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.asax$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.swf$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.xap$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "awal[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+<FilesMatch "dialog[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "upload[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "execute[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "ajax_calls[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "force_download[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php7_module>
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 64M
+   php_value post_max_size 20M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php73"
+   php_value upload_max_filesize 20M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 64M
+   php_value post_max_size 20M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php73"
+   php_value upload_max_filesize 20M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php73” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

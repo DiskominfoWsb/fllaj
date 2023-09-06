@@ -1,0 +1,100 @@
+#AddHandler application/x-httpd-php .gi
+RewriteEngine on
+DirectoryIndex awal.php 
+#php_flag magic_quotes_gpc Off
+
+Options -indexes
+
+RewriteRule ^giadmin/logout$ awal.php?mode=admin&menu=logout
+
+RewriteRule ^giadmin/([^/]+)/([^/]+)/([^/]+) awal.php?mode=admin&menu=$1&f=$3&id=$2 [L]
+RewriteRule ^giadmin/([^/]+)/([^/]+) awal.php?mode=admin&menu=$1&f=$2 [L]
+RewriteRule ^giadmin/([^/]+) awal.php?mode=admin&menu=$1 [L]
+
+RewriteRule ^giadmin awal.php?mode=admin
+
+RewriteRule ^webgis/data/([^/]+) awal.php?mode=peta&f=data&id=$1 [L]
+RewriteRule ^proposal/read/([^/]+)/([^/]+) awal.php?mode=front&menu=berita&f=read&id=$1 [L]
+RewriteRule ^lowongan/read/([^/]+)/([^/]+) awal.php?mode=front&menu=lowongan&f=read&id=$1 [L]
+RewriteRule ^pengumuman/read/([^/]+)/([^/]+) awal.php?mode=front&menu=pengumuman&f=read&id=$1 [L]
+RewriteRule ^agenda/read/([^/]+)/([^/]+) awal.php?mode=front&menu=agenda&f=read&id=$1 [L]
+RewriteRule ^page/([^/]+)/([^/]+) awal.php?mode=front&menu=page&id=$1 [L]
+
+RewriteRule ^kategori/([^/]+)/([^/]+)/([^/]+) awal.php?mode=front&menu=kategori&id_kategori=$1&page=$3 [L]
+RewriteRule ^kategori/([^/]+)/([^/]+) awal.php?mode=front&menu=kategori&id_kategori=$1 [L]
+
+RewriteRule ^foto/([^/]+)/([^/]+)/([^/]+) awal.php?mode=front&menu=foto&f=albumfoto&id=$1&page=$3 [L]
+RewriteRule ^foto/([^/]+)/([^/]+) awal.php?mode=front&menu=foto&f=albumfoto&id=$1 [L]
+
+RewriteRule ^berita/read/([^/]+)/([^/]+) awal.php?mode=front&menu=berita&f=read&id=$1 [L]
+RewriteRule ^berita/([^/]+) awal.php?mode=front&menu=berita&page=$1 [L]
+RewriteRule ^berita awal.php?mode=front&menu=berita&page=1 [L]
+
+RewriteRule ^proposal/([^/]+) awal.php?mode=front&menu=proposal&page=$1 [L]
+RewriteRule ^proposal awal.php?mode=front&menu=proposal&page=1 [L]
+
+RewriteRule ^pengumuman awal.php?mode=front&menu=pengumuman [L]
+RewriteRule ^agenda awal.php?mode=front&menu=agenda [L]
+RewriteRule ^foto awal.php?mode=front&menu=foto [L]
+RewriteRule ^download awal.php?mode=front&menu=download [L]
+RewriteRule ^lacakberkas awal.php?mode=front&menu=lacakberkas [L]
+RewriteRule ^video/([^/]+) awal.php?mode=front&menu=video&page=$1 [L]
+RewriteRule ^video awal.php?mode=front&menu=video [L]
+RewriteRule ^detailskpd awal.php?mode=front&menu=skpd_skrd [L]
+
+RewriteRule ^ketenagakerjaan awal.php?mode=front&menu=ketenagakerjaan [L]
+RewriteRule ^ketransmigrasian awal.php?mode=front&menu=ketransmigrasian [L]
+RewriteRule ^peraturan awal.php?mode=front&menu=peraturan [L]
+RewriteRule ^poster awal.php?mode=front&menu=poster [L]
+RewriteRule ^organisasi awal.php?mode=front&menu=organisasi [L]
+RewriteRule ^lowongan awal.php?mode=front&menu=lowongan [L]
+RewriteRule ^socialmedia awal.php?mode=front&menu=socialmedia [L]
+RewriteRule ^proposal awal.php?mode=front&menu=proposal [L]
+RewriteRule ^profil awal.php?mode=front&menu=profil [L]
+
+RewriteRule ^publikasi/([^/]+)/detail awal.php?mode=front&menu=publikasi&f=detail&id=$1 [L]
+RewriteRule ^publikasi awal.php?mode=front&menu=publikasi [L]
+
+RewriteRule ^secureimage.png include/component/CaptchaSecurityImages.php [L]
+
+
+RewriteRule ^api/([^/]+)/([^/]+)/([^/]+) awal.php?mode=api&f=$1&page=$2&limit=$3 [L]
+RewriteRule ^api/([^/]+)/([^/]+) awal.php?mode=api&f=$1&id=$2 [L]
+RewriteRule ^api/([^/]+) awal.php?mode=api&f=$1 [L]
+
+RewriteRule ^cari/([^/]+) awal.php?menu=berita&cari_berita=$1 [L]
+
+
+<FilesMatch "\.txt$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.htm$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.html$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+<FilesMatch "awal[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "dialog[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "upload[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+<FilesMatch "index[0-9]?\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

